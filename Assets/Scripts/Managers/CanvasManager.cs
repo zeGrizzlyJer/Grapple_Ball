@@ -9,12 +9,13 @@ public class CanvasManager : Singleton<CanvasManager>
     [Header("Menus")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject pauseMenu;
 
     [Header("Buttons")]
     [SerializeField] private Button startButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button quitButton;
-    [SerializeField] private Button backButton;
+    [SerializeField] private Button menuButton;
 
     [Header("Scene Names")]
     public string mainScene;
@@ -30,8 +31,8 @@ public class CanvasManager : Singleton<CanvasManager>
         if (settingsButton)
             settingsButton.onClick.AddListener(ShowSettingsMenu);
 
-        if (backButton)
-            backButton.onClick.AddListener(ShowMainMenu);
+        if (menuButton)
+            menuButton.onClick.AddListener(ShowMainMenu);
 
         if (quitButton)
             quitButton.onClick.AddListener(Quit);
@@ -40,16 +41,21 @@ public class CanvasManager : Singleton<CanvasManager>
     void StartGame()
     {
         SceneManager.LoadScene(mainScene);
+        settingsMenu.SetActive(false);
+        mainMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
     void ShowSettingsMenu()
     {
         settingsMenu.SetActive(true);
         mainMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
     void ShowMainMenu()
     {
         settingsMenu.SetActive(false);
         mainMenu.SetActive(true);
+        pauseMenu.SetActive(false);
     }
     void Quit()
     {
@@ -60,5 +66,7 @@ public class CanvasManager : Singleton<CanvasManager>
         #endif
     }
 
-
+    // Pause
+    // Un-Pause
+    // Audio Manager Reference
 }
