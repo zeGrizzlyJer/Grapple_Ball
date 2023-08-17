@@ -8,29 +8,29 @@ public class PlayerInput : MonoBehaviour
 {
 
     [HideInInspector]
-    public PlayerActions playerInput;
+    public PlayerActions input;
 
     private void OnEnable()
     {
         // Enable the input actions when the object is enabled
-        playerInput.Enable();
+        input.Enable();
     }
 
     private void OnDisable()
     {
         // Disable the input actions when the object is disabled
-        playerInput.Disable();
+        input.Disable();
     }
 
     private void Awake() 
     {
-        playerInput = new PlayerActions();
+        input = new PlayerActions();
 
-        playerInput.Keyboard.Move.performed += ctx => Move(ctx);
-        playerInput.Keyboard.Move.canceled += ctx => Move(ctx);
-        playerInput.Keyboard.Jump.performed += ctx => JumpPressed(ctx);
-        playerInput.Keyboard.Grapple.performed += ctx => GrapplePressed(ctx);
-        playerInput.Keyboard.Boost.performed += ctx => Boost(ctx);
+        input.Keyboard.Move.performed += ctx => Move(ctx);
+        input.Keyboard.Move.canceled += ctx => Move(ctx);
+        input.Keyboard.Jump.performed += ctx => JumpPressed(ctx);
+        input.Keyboard.Grapple.performed += ctx => GrapplePressed(ctx);
+        input.Keyboard.Boost.performed += ctx => Boost(ctx);
     }
 
     private void Boost(InputAction.CallbackContext ctx)
