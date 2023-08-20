@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class PlayerAbility : MonoBehaviour
 {
-    [SerializeField] private Transform station;
+    [SerializeField] protected Transform station;
 
-    private void Start()
+    protected virtual void Start()
     {
         if (!station) Debug.Log("Please set parent on " + gameObject.name);
     }
@@ -21,20 +21,27 @@ public abstract class PlayerAbility : MonoBehaviour
         Debug.Log("Secondary use activated on " + gameObject.name);
     }
 
-    // For multiple abilities, allows us to disable one ability and enable another
-    public virtual void EnableAbility()
+    protected void DockAbility()
     {
-        Debug.Log("Enabling ability " + gameObject.name);
+        Debug.Log("Docking ability: " + gameObject.name);
         transform.SetParent(station);
-        gameObject.transform.position = station.position;
+        //transform.position = station.position;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    // For multiple abilities, allows us to disable one ability and enable another
+    public void EnableAbility()
+    {
+        Debug.Log("Enabling ability: " + gameObject.name);
+        DockAbility();
         gameObject.SetActive(true);
     }
     
-    public virtual void DisableAbility()
+    public void DisableAbility()
     {
-        Debug.Log("Enabling ability " + gameObject.name);
-        transform.SetParent(station);
-        gameObject.transform.position = station.position;
+        Debug.Log("Disabling ability: " + gameObject.name);
+        DockAbility();
         gameObject.SetActive(false);
     }
 }
