@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float acceleration;
     public float maxSpeed;
-    private float currentSpeed;
 
     private Vector2 inputDirection;
     private Vector3 playerDirection;
