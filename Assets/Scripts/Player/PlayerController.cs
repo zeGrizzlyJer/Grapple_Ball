@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         inputDirection = ctx.action.ReadValue<Vector2>();
-        Debug.Log("Movin");
+        Debug.Log("Moving");
     }
 
     private void PrimaryAction(InputAction.CallbackContext ctx)

@@ -24,7 +24,7 @@ public abstract class PlayerAbility : MonoBehaviour
     protected void DockAbility()
     {
         Debug.Log("Docking ability: " + gameObject.name);
-        transform.SetParent(station);
+        transform.SetParent(station, false);
         //transform.position = station.position;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;

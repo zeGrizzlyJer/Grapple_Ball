@@ -10,18 +10,13 @@ public class Grapple : PlayerAbility
     public float grappleLength;
     public float projectileSpeed;
 
-    [SerializeField]
     private bool colliderActive = false;
-    [SerializeField]
     private bool reeling = false;
-    [SerializeField]
     private bool casting = false;
-    [SerializeField]
     private bool isDeployed = false;
 
     private Rigidbody rBody;
     private CapsuleCollider cCollider;
-    private Vector3 shotPosition;
 
     protected override void Start()
     {
@@ -31,6 +26,7 @@ public class Grapple : PlayerAbility
 
         cCollider.enabled = false;
         rBody.useGravity = false;
+        rBody.isKinematic = true;
     }
 
     private void Update()
@@ -55,11 +51,9 @@ public class Grapple : PlayerAbility
                 isDeployed = false;
                 rBody.velocity = Vector3.zero;
                 DockAbility();
+                rBody.isKinematic = true;
             }
         }
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, station.position);
     }
 
     private void FixedUpdate()
@@ -70,11 +64,20 @@ public class Grapple : PlayerAbility
         rBody.velocity = direction * projectileSpeed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmos()
+    {
+        if (!isDeployed) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, station.position);
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player")) return;
         ToggleCollider();
+        casting = false;
         rBody.velocity = Vector3.zero;
+        rBody.isKinematic = true;
         transform.SetParent(other.gameObject.transform);
     }
 
@@ -83,7 +86,6 @@ public class Grapple : PlayerAbility
         if (isDeployed) return;
         base.PrimaryUse();
         LaunchGrapple(transform.forward, false);
-        shotPosition = transform.position;
     }
 
     public override void SecondaryUse()
@@ -92,7 +94,7 @@ public class Grapple : PlayerAbility
         base.SecondaryUse();
         Vector3 direction = (station.position - transform.position).normalized;
         LaunchGrapple(direction, true);
-        ToggleCollider();
+        if (colliderActive) ToggleCollider();
     }
 
 
@@ -106,8 +108,13 @@ public class Grapple : PlayerAbility
     private void LaunchGrapple(Vector3 direction, bool stationing)
     {
         isDeployed = true;
+        rBody.isKinematic = false;
         transform.SetParent(null);
-        if (stationing) reeling = true;
+        if (stationing)
+        {
+            casting = false;
+            reeling = true;
+        }
         else
         {
             ToggleCollider();
