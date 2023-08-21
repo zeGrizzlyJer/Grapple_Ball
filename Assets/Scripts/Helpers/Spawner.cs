@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] pickups;
     public Transform[] spawnpoints;
-    // Start is called before the first frame update
+
     void Start()
     {
         int pickupsize = pickups.Length;
@@ -17,11 +17,4 @@ public class Spawner : MonoBehaviour
             Instantiate(pickups[CoinPickup], spawnpoints[i].position, spawnpoints[i].rotation);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 }
