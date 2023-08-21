@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GrappleBall;
 
 public abstract class PlayerAbility : MonoBehaviour
 {
     [SerializeField] protected Transform station;
+    [SerializeField] protected PlayerAbilities ability;
+    public PlayerAbilities Ability
+    {
+        get { return ability; }
+    }
 
     protected virtual void Start()
     {
@@ -25,7 +31,6 @@ public abstract class PlayerAbility : MonoBehaviour
     {
         Debug.Log("Docking ability: " + gameObject.name);
         transform.SetParent(station, false);
-        //transform.position = station.position;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
     }
@@ -44,4 +49,7 @@ public abstract class PlayerAbility : MonoBehaviour
         DockAbility();
         gameObject.SetActive(false);
     }
+
+    public abstract bool IsGrappled();
+    public abstract float AbilityLength();
 }

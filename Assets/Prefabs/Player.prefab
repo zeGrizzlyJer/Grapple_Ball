@@ -386,8 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 7522272510076976861}
-  grappleLength: 30
-  projectileSpeed: 30
+  ability: 0
+  grappleLength: 20
+  projectileSpeed: 45
 --- !u!1 &5166204242968903663
 GameObject:
   m_ObjectHideFlags: 0
