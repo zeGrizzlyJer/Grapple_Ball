@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.Windows;
+using GrappleBall;
 
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private Rigidbody rb;
+    private Rigidbody rBody;
     [SerializeField] private PlayerAbility ability;
 
     public float gravity;
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
-        rb = GetComponent<Rigidbody>();
+        rBody = GetComponent<Rigidbody>();
         if (!ability) Debug.Log("Please set an ability on: " + gameObject.name);
 
         playerInput.input.Keyboard.Move.performed += ctx => Move(ctx);
@@ -36,13 +37,40 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Movement();
+        AbilityBehaviour();
+    }
+
+    private void Movement()
+    {
         Vector3 forwardXZ = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
         playerDirection = ((forwardXZ * inputDirection.y) + (transform.right * inputDirection.x)) * acceleration - Vector3.up * gravity;
 
-        rb.AddForce(playerDirection);
-        if (rb.velocity.magnitude > maxSpeed)
+        rBody.AddForce(playerDirection);
+        if (rBody.velocity.magnitude > maxSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+            rBody.velocity = rBody.velocity.normalized * maxSpeed;
+        }
+    }
+
+    private void AbilityBehaviour()
+    {
+        if (ability.Ability == PlayerAbilities.Grapple)
+        {
+            if (!ability.IsGrappled()) return;
+            Vector3 grapplePosition = ability.transform.position;
+            float distance = (grapplePosition - transform.position).magnitude;
+
+            if (distance >= ability.AbilityLength())
+            {
+                Vector3 normal = (grapplePosition - transform.position).normalized;
+                transform.position = grapplePosition - ability.AbilityLength() * normal;
+
+                float dotProduct = Vector3.Dot(rBody.velocity, normal);
+                Vector3 projection = rBody.velocity - dotProduct * normal;
+
+                rBody.velocity = projection;
+            }
         }
     }
 

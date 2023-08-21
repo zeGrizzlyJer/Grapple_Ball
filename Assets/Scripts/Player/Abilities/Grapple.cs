@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using GrappleBall;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Grapple : PlayerAbility
@@ -21,6 +22,7 @@ public class Grapple : PlayerAbility
     protected override void Start()
     {
         base.Start();
+        ability = PlayerAbilities.Grapple;
         rBody = GetComponent<Rigidbody>();
         cCollider = GetComponent<CapsuleCollider>();
 
@@ -122,5 +124,15 @@ public class Grapple : PlayerAbility
         }
 
         rBody.velocity = direction * projectileSpeed;
+    }
+
+    public override bool IsGrappled()
+    {
+        return (isDeployed && !casting && !reeling);
+    }
+
+    public override float AbilityLength()
+    {
+        return grappleLength;
     }
 }
