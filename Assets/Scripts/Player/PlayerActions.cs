@@ -46,9 +46,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Grapple"",
+                    ""name"": ""PrimaryAction"",
                     ""type"": ""Button"",
                     ""id"": ""9022ba04-65b8-48a5-bb60-fe780feebff6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""35ca5a2d-055e-435c-bead-3e5d387357d7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -248,7 +257,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grapple"",
+                    ""action"": ""PrimaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -292,7 +301,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grapple"",
+                    ""action"": ""PrimaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -303,7 +312,40 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grapple"",
+                    ""action"": ""PrimaryAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ec2fb53-1b62-4cf0-92fc-c6fee1eadde4"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13f7af01-d05f-40b6-80c7-afb529976b67"",
+                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb50ed3e-2f88-4901-91ab-f9d6f8560698"",
+                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -316,7 +358,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
         m_Keyboard_Move = m_Keyboard.FindAction("Move", throwIfNotFound: true);
         m_Keyboard_Jump = m_Keyboard.FindAction("Jump", throwIfNotFound: true);
-        m_Keyboard_Grapple = m_Keyboard.FindAction("Grapple", throwIfNotFound: true);
+        m_Keyboard_PrimaryAction = m_Keyboard.FindAction("PrimaryAction", throwIfNotFound: true);
+        m_Keyboard_SecondaryAction = m_Keyboard.FindAction("SecondaryAction", throwIfNotFound: true);
         m_Keyboard_Boost = m_Keyboard.FindAction("Boost", throwIfNotFound: true);
     }
 
@@ -381,7 +424,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private List<IKeyboardActions> m_KeyboardActionsCallbackInterfaces = new List<IKeyboardActions>();
     private readonly InputAction m_Keyboard_Move;
     private readonly InputAction m_Keyboard_Jump;
-    private readonly InputAction m_Keyboard_Grapple;
+    private readonly InputAction m_Keyboard_PrimaryAction;
+    private readonly InputAction m_Keyboard_SecondaryAction;
     private readonly InputAction m_Keyboard_Boost;
     public struct KeyboardActions
     {
@@ -389,7 +433,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public KeyboardActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Keyboard_Move;
         public InputAction @Jump => m_Wrapper.m_Keyboard_Jump;
-        public InputAction @Grapple => m_Wrapper.m_Keyboard_Grapple;
+        public InputAction @PrimaryAction => m_Wrapper.m_Keyboard_PrimaryAction;
+        public InputAction @SecondaryAction => m_Wrapper.m_Keyboard_SecondaryAction;
         public InputAction @Boost => m_Wrapper.m_Keyboard_Boost;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
@@ -406,9 +451,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Grapple.started += instance.OnGrapple;
-            @Grapple.performed += instance.OnGrapple;
-            @Grapple.canceled += instance.OnGrapple;
+            @PrimaryAction.started += instance.OnPrimaryAction;
+            @PrimaryAction.performed += instance.OnPrimaryAction;
+            @PrimaryAction.canceled += instance.OnPrimaryAction;
+            @SecondaryAction.started += instance.OnSecondaryAction;
+            @SecondaryAction.performed += instance.OnSecondaryAction;
+            @SecondaryAction.canceled += instance.OnSecondaryAction;
             @Boost.started += instance.OnBoost;
             @Boost.performed += instance.OnBoost;
             @Boost.canceled += instance.OnBoost;
@@ -422,9 +470,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Grapple.started -= instance.OnGrapple;
-            @Grapple.performed -= instance.OnGrapple;
-            @Grapple.canceled -= instance.OnGrapple;
+            @PrimaryAction.started -= instance.OnPrimaryAction;
+            @PrimaryAction.performed -= instance.OnPrimaryAction;
+            @PrimaryAction.canceled -= instance.OnPrimaryAction;
+            @SecondaryAction.started -= instance.OnSecondaryAction;
+            @SecondaryAction.performed -= instance.OnSecondaryAction;
+            @SecondaryAction.canceled -= instance.OnSecondaryAction;
             @Boost.started -= instance.OnBoost;
             @Boost.performed -= instance.OnBoost;
             @Boost.canceled -= instance.OnBoost;
@@ -449,7 +500,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnGrapple(InputAction.CallbackContext context);
+        void OnPrimaryAction(InputAction.CallbackContext context);
+        void OnSecondaryAction(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
     }
 }
