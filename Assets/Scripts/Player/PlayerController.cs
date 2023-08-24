@@ -51,6 +51,13 @@ public class PlayerController : MonoBehaviour
         {
             rBody.velocity = rBody.velocity.normalized * maxSpeed;
         }
+
+        /*Vector3 accel = ((inputDirection.y * forwardXZ) + (inputDirection.x * transform.right)) * acceleration + (Vector3.down * gravity);
+        rBody.velocity += accel * Time.deltaTime;
+        if (rBody.velocity.magnitude > maxSpeed)
+        {
+            rBody.velocity = rBody.velocity.normalized * maxSpeed;
+        }*/
     }
 
     private void AbilityBehaviour()
