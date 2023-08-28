@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WhiteBox.unity
     guid: ebbc59dcf07a1f346855fe162725733b
+  - enabled: 1
+    path: Assets/Scenes/UserScenes/RyanF.unity
+    guid: 515d7fc70d9753e4ca76da1ccaf9db22
   m_configObjects: {}
