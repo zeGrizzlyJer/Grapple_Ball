@@ -124,7 +124,9 @@ public class PauseMenuManager : MonoBehaviour
         menuOpened = true;
         fader.FadeScreen(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
+
+        Time.timeScale = 0;
 
         menu.SetActive(true);
         fader.FadeScreen(false);
@@ -134,7 +136,9 @@ public class PauseMenuManager : MonoBehaviour
         menuOpened = false;
         fader.FadeScreen(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
+
+        Time.timeScale = 1;
 
         menu.SetActive(false);
         fader.FadeScreen(false);
@@ -143,7 +147,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         fader.FadeScreen(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
 
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(true);
@@ -154,7 +158,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         fader.FadeScreen(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
 
         pauseMenu.SetActive(true);
         settingsMenu.SetActive(false);
@@ -165,9 +169,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         fader.FadeScreen(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
 
-        SceneManager.LoadScene("WhiteBox");
+        Time.timeScale = 1;
+
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
@@ -175,7 +180,9 @@ public class PauseMenuManager : MonoBehaviour
     {
         fader.FadeScreen(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
+
+        Time.timeScale = 1;
 
         SceneManager.LoadScene("MainMenu");
     }
