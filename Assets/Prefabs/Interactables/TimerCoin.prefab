@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131141436803854887}
   - component: {fileID: 7955713577354205797}
-  - component: {fileID: 8631619512998618850}
+  - component: {fileID: -8536685177577385243}
   m_Layer: 0
   m_Name: TimerCoin
   m_TagString: Coin
@@ -138,7 +138,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8631619512998618850
+--- !u!114 &-8536685177577385243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,10 +147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9078176023935755709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d4462b7e6f09054bb4b3106e3cc1c04, type: 3}
+  m_Script: {fileID: 11500000, guid: 8801754c23a7eff48bcfb430f77471f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   points: 10
   rotationSpeed: 90
   oscillateSpeed: 2.5
   oscillateHeight: 0.1
+  timerObject: {fileID: 0}
