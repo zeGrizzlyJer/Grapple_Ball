@@ -163,6 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 283650954}
+  - component: {fileID: 283650955}
   m_Layer: 0
   m_Name: TimerStarter
   m_TagString: Untagged
@@ -186,6 +187,19 @@ Transform:
   - {fileID: 419432941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283650955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283650953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6abc89bf54ed99a4495c65c1ce6a6f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 718371746}
 --- !u!1 &381038518
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e399b40a4f2f6429c046cc07d05a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupPrefab: {fileID: 6905139741762556429, guid: 4b0b4100a8b66b94a98931a373d4bbb6, type: 3}
+  pickupPrefab: {fileID: 9078176023935755709, guid: 4265f4157cf5af741b43387dfb20959e, type: 3}
   prizePrefab: {fileID: 518589767913123747, guid: 02abe425196d5b6419684487ba29e6d4, type: 3}
   spawnPoints:
   - {fileID: 1792592742}
@@ -818,6 +832,7 @@ GameObject:
   - component: {fileID: 5719072433420960135}
   - component: {fileID: 285254173686205020}
   - component: {fileID: 3918984483402661405}
+  - component: {fileID: 5719072433420960136}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -903,6 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aec7d3aeb57cce4785a69d112d62d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBoost: {fileID: 5719072433420960136}
   ability: {fileID: 6006893876843028916}
   gravity: 10
   acceleration: 30
@@ -1094,6 +1110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41381c7d13cfaf64688e5a6e2945b85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5719072433420960136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779534166745543162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88916fed3a228d7478e19d59e633903b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostDuration: 2
+  boostSpeedMultiplier: 25
+  isBoosting: 0
 --- !u!4 &5813057158522972185
 Transform:
   m_ObjectHideFlags: 0

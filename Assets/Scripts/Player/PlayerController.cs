@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Rigidbody rBody;
+
+    [SerializeField] private Boost playerBoost;
     [SerializeField] private PlayerAbility ability;
 
     public float gravity;
@@ -47,9 +49,9 @@ public class PlayerController : MonoBehaviour
         playerDirection = ((forwardXZ * inputDirection.y) + (transform.right * inputDirection.x)) * acceleration - Vector3.up * gravity;
 
         rBody.AddForce(playerDirection);
-        if (rBody.velocity.magnitude > maxSpeed)
+        if ((rBody.velocity.magnitude > maxSpeed) && !playerBoost.isBoosting) 
         {
-            rBody.velocity = rBody.velocity.normalized * maxSpeed;
+            rBody.velocity = rBody.velocity.normalized * maxSpeed; 
         }
 
         /*Vector3 accel = ((inputDirection.y * forwardXZ) + (inputDirection.x * transform.right)) * acceleration + (Vector3.down * gravity);
