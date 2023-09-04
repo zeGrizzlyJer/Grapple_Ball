@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5719072432558027247}
   - component: {fileID: 285254172269558324}
   - component: {fileID: 3918984484131376757}
+  - component: {fileID: 1000205523121885120}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -242,10 +243,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aec7d3aeb57cce4785a69d112d62d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBoost: {fileID: 0}
   ability: {fileID: 6006893877588529628}
   gravity: 10
   acceleration: 100
   maxSpeed: 30
+--- !u!114 &1000205523121885120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779534167593795986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88916fed3a228d7478e19d59e633903b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostDuration: 2
+  boostSpeedMultiplier: 50
+  isBoosting: 0
 --- !u!1 &4447201378027344212
 GameObject:
   m_ObjectHideFlags: 0

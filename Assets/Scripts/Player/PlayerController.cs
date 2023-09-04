@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Rigidbody rBody;
+    private Boost playerBoost;
 
-    [SerializeField] private Boost playerBoost;
     [SerializeField] private PlayerAbility ability;
 
     public float gravity;
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerBoost = GetComponent<Boost>();
         rBody = GetComponent<Rigidbody>();
         if (!ability) Debug.Log("Please set an ability on: " + gameObject.name);
 

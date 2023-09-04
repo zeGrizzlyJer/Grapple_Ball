@@ -8320,6 +8320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1000205523121885120, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
+      propertyPath: boostSpeedMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2779534167593795986, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
       propertyPath: m_Name
       value: Player
