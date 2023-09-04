@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.Timeline.AnimationPlayableAsset;
 
 public class LookAt : MonoBehaviour
 {
@@ -75,16 +74,5 @@ public class LookAt : MonoBehaviour
         rotation.y = ClampVerticalAngle(rotation.y);
 
         transform.localEulerAngles = new Vector3(rotation.y, rotation.x, 0);
-
-        if (Input.GetKeyDown("1"))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        if (Input.GetKey("2"))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
     }
 }
