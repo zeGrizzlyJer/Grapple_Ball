@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class PickUpCoin : MonoBehaviour
+public class Coin : Interactables
 {
-    public int points = 0;
     public float rotationSpeed;
     public float oscillateSpeed;
     public float oscillateHeight;
 
     private float startHeight;
 
-    private void Start()
+    protected virtual void Start() 
     {
-        startHeight = transform.position.y;
+        startHeight = transform.position.y; 
     }
 
-    private void Update()
+    protected virtual void Update() 
     {
         Vector3 euler = transform.localEulerAngles;
         if (euler.y > 360) euler.y -= 360;
@@ -26,11 +25,10 @@ public class PickUpCoin : MonoBehaviour
         transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)   
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Score added: " + points);
             Destroy(gameObject);
         }
     }

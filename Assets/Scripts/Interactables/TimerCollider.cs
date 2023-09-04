@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimerColliderPLACEHOLDER : MonoBehaviour
+public class TimerCollider : Interactables 
 {
     [SerializeField] private TimerManager timer;
 
@@ -11,7 +11,7 @@ public class TimerColliderPLACEHOLDER : MonoBehaviour
         if (!timer) Debug.Log($"Timer not found on {name}");
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))   
         {
@@ -19,5 +19,5 @@ public class TimerColliderPLACEHOLDER : MonoBehaviour
             timer.TimerStart();
             Destroy(gameObject); 
         }
-    }
+    } 
 }
