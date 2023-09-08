@@ -274,8 +274,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3dff4f52-eadd-4c41-82d5-341c7f601aac"",
-                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""id"": ""f0e14b4d-7741-451d-b392-53b2def7ceb5"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -285,8 +285,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""130b5a08-0e8c-4d02-b443-a7fb8a6de83c"",
-                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""id"": ""2f31c891-475f-4d20-b535-064f6199336c"",
+                    ""path"": ""<XInputController>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
