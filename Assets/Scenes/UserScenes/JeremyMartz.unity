@@ -8421,30 +8421,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2779534167593795986, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2970628086089346228, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4f9b9d4fab2545d44ba121d34bb4ae56, type: 2}
-    - target: {fileID: 4447201378027344212, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631838260238538716, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4824845632333421233, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5166204242968903663, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5232252953654802910, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8485,18 +8461,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5901106766441001550, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7439471561214348798, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8086015640647379241, guid: 213dc827f4e6da542b98621fe3daeb98, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4f9b9d4fab2545d44ba121d34bb4ae56, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
