@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
-    public GameObject pickupPrefab; // The prefab of the coin to be collected
-    public GameObject prizePrefab; // The prefab of the powerup that appears when all coins are collected
-    public Transform[] spawnPoints;
-    public Transform winPoint;
+    [SerializeField] private GameObject pickupPrefab; // The prefab of the coin to be collected
+    [SerializeField] private GameObject prizePrefab; // The prefab of the powerup that appears when all coins are collected
+    [SerializeField] private Transform timerStarter;
+    [SerializeField] private TimerCollider timerColliderScript;
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform winPoint;
 
     [SerializeField] private int coinAmount = 3; // How many coins player has to collect before the timer runs out
     [SerializeField] private float timerEnd = 10f; // 10 seconds 
@@ -79,6 +81,11 @@ public class TimerManager : MonoBehaviour
             {
                 Instantiate(prizePrefab, winPoint.position, winPoint.rotation); // Instantiate the prize
             }
+            else
+            {
+                timerColliderScript.timerActive = true;  
+                TimerReset(); 
+            } 
         }
     }
 

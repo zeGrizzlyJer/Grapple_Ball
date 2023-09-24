@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class TimerCollider : Interactables 
 {
-    [SerializeField] private TimerManager timer;
+    BoxCollider boxCollider;
+    private TimerManager timer;
+    public bool timerActive; 
 
     private void Start()
     {
+        timer = GameObject.FindGameObjectWithTag("TimerObject").GetComponent<TimerManager>();   
+        boxCollider = GetComponent<BoxCollider>();
+        timerActive = true; 
         if (!timer) Debug.Log($"Timer not found on {name}");
     }
 
@@ -17,7 +22,12 @@ public class TimerCollider : Interactables
         {
             Debug.Log("Timer Started"); 
             timer.TimerStart();
-            Destroy(gameObject); 
+            timerActive = false; 
         }
-    } 
+    }
+
+    public void Update()
+    {
+        boxCollider.enabled = timerActive; 
+    }
 }
