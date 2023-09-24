@@ -28,7 +28,8 @@ public class TimerCoin : Coin
             {
                 timer.coinCount++; 
             }
-            Debug.Log("Timer Coins Collected: " + timer.coinCount); 
+            Debug.Log("Timer Coins Collected: " + timer.coinCount);
+            FindObjectOfType<AudioManager>().Play("TimerCoinPickUp");
         }
         base.OnTriggerEnter(other); 
     }

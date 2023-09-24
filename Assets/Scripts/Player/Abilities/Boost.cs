@@ -28,6 +28,7 @@ public class Boost : MonoBehaviour
             isBoosting = true;
             originalVelocity = rBody.velocity; // Store the original velocity
             Debug.Log("BOOSTED");
+            FindObjectOfType<AudioManager>().Play("Boost");
 
             // Apply the boost by multiplying the current velocity
             rBody.velocity *= boostSpeedMultiplier;

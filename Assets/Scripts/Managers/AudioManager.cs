@@ -33,16 +33,25 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-   
+    /*private void Start()
+    {
+        Play("Background Music");
+    }*/
 
-    public void Play(string name)
+
+    public void Play (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s != null)
+        if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
+            return;
         }
-       
         s.source.Play();
+        //For tracking which sound is being called when
+        Debug.Log("Playing " + name);
+
     }
+
+
 }

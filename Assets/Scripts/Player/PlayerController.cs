@@ -48,8 +48,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 forwardXZ = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
         playerDirection = ((forwardXZ * inputDirection.y) + (transform.right * inputDirection.x)) * acceleration - Vector3.up * gravity;
-
+       
         rBody.AddForce(playerDirection);
+       
         if ((rBody.velocity.magnitude > maxSpeed) && !playerBoost.isBoosting) 
         {
             rBody.velocity = rBody.velocity.normalized * maxSpeed; 
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour
         }
         inputDirection = ctx.action.ReadValue<Vector2>();
         Debug.Log("Moving");
+        FindObjectOfType<AudioManager>().Play("PlayerRoll");
     }
 
     private void PrimaryAction(InputAction.CallbackContext ctx)

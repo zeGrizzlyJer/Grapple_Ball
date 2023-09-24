@@ -46,26 +46,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: PlayerRoll
-    clip: {fileID: 8300000, guid: 034fb3672beed3347bb81644747ca257, type: 3}
+    clip: {fileID: 8300000, guid: 8824d899f053a084fa23fe768ade6219, type: 3}
     volume: 1
-    pitch: 0
-    loop: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: CoinPickUp
     clip: {fileID: 8300000, guid: f4517b102ce552943b6f989ffc4cb6e1, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: TimerCoinPickUp
     clip: {fileID: 8300000, guid: 107364f9df89e49408405fbb4da30cd0, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Boost
     clip: {fileID: 8300000, guid: 20d245b770c1ca14a868bf488fae20b5, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MouseClick
+    clip: {fileID: 8300000, guid: 391ddf657005ddb4ea3c76085041a66b, type: 3}
+    volume: 1
+    pitch: 1
     loop: 0
     source: {fileID: 0}

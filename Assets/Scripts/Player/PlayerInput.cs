@@ -43,6 +43,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         Debug.Log("Boost started");
+        FindObjectOfType<AudioManager>().Play("Boost");
     }
 
     private void PrimaryActionPressed(InputAction.CallbackContext ctx)
@@ -83,6 +84,7 @@ public class PlayerInput : MonoBehaviour
             return;
         }
         Debug.Log("Movement started");
+        
     }
 
     void Update()

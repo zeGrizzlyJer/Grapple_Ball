@@ -16,6 +16,7 @@ public class ButtonAnimation : MonoBehaviour
     public void OnPress()
     {
         anim.SetBool("Pressed", true);
+        FindObjectOfType<AudioManager>().Play("MouseClick");
         StartCoroutine(PressDelay());
     }
     public void MouseOver()
