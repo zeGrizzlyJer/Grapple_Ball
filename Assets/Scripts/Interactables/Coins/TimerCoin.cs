@@ -4,7 +4,7 @@ using UnityEngine;
 public class TimerCoin : Coin 
 {
     private GameObject timerObject;  
-    private TimerManager timer; 
+    private TimerManager timer;
 
     protected override void Start() 
     {
