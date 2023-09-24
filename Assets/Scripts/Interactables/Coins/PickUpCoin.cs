@@ -18,6 +18,8 @@ public class PickUpCoin : Coin
     protected override void OnTriggerEnter(Collider other)  
     {
         if (other.CompareTag("Player")) Debug.Log("Score added: " + points);
+        //Plays audio
+        //FindObjectOfType<AudioManager>().Play("CoinPickUp");
         base.OnTriggerEnter(other);
     }
 }
