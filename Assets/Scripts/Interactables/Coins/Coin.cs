@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 public class Coin : Interactables
 {
     public float rotationSpeed;
@@ -8,6 +10,9 @@ public class Coin : Interactables
     public float oscillateHeight;
 
     private float startHeight;
+
+    [SerializeField] private GameObject burstPrefab;
+    [SerializeField] private GameObject bubblePrefab; 
 
     protected virtual void Start() 
     {
@@ -29,6 +34,8 @@ public class Coin : Interactables
     {
         if (other.CompareTag("Player"))
         {
+            Instantiate(burstPrefab, transform.position, transform.rotation);
+            Instantiate(bubblePrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
