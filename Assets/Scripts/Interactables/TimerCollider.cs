@@ -22,7 +22,9 @@ public class TimerCollider : Interactables
         {
             Debug.Log("Timer Started"); 
             timer.TimerStart();
-            timerActive = false; 
+            timerActive = false;
+
+            GameObject.FindGameObjectWithTag("HUD").GetComponent<HUDManager>().enabled = true;
         }
     }
 

@@ -10,6 +10,10 @@ public class HUDManager : MonoBehaviour
 
     // ------------------------------- //
 
+    private void Start()
+    {
+        gameObject.GetComponent<CanvasGroupFade>().FadeIn();
+    }
     private void Update()
     {
         timerValue.text = StatHolder.timer.ToString("0.0s");

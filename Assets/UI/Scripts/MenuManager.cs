@@ -48,6 +48,9 @@ public class MenuManager : MonoBehaviour
     {
         StatHolder.LoadSettings();
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible= false;
+
         brightnessSlider.value = StatHolder.brightness;
         volumeSlider.value = StatHolder.volume;
     }
@@ -101,6 +104,9 @@ public class MenuManager : MonoBehaviour
         pauseMenu.FadeIn();
         yield return new WaitForSecondsRealtime(0.25f);
         menu.FadeIn();
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         //fader.FadeScreen(false);
     }
     IEnumerator iResumeGame()
@@ -115,6 +121,10 @@ public class MenuManager : MonoBehaviour
 
         Time.timeScale = 1;
         GameManager.Instance.GameState = GameStates.PLAY;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         //fader.FadeScreen(false);
     }
     IEnumerator iShowSettingsMenu()
@@ -154,6 +164,8 @@ public class MenuManager : MonoBehaviour
     private void OnDisable()
     {
         StatHolder.SaveSettings();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }
 
