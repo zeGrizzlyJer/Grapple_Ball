@@ -47,9 +47,11 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         StatHolder.LoadSettings();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible= false;
+        if (menuType == MenuType.PauseMenu)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         brightnessSlider.value = StatHolder.brightness;
         volumeSlider.value = StatHolder.volume;
@@ -66,6 +68,8 @@ public class MenuManager : MonoBehaviour
             else
             {
                 ResumeGame();
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
 
