@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 playerInput;
     //private Vector3 playerDirection;
 
+    public float GetSpeed => velocity.magnitude;
+    public float GetMaxSpeed => maxSpeed;
+
     private void OnValidate()
     {
         minGroundDotProduct = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);

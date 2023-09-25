@@ -11,6 +11,7 @@ public class OrbitCamera : MonoBehaviour
     [SerializeField, Range(1f, 20f)] float distance = 5f;
     [SerializeField, Min(0f)] float focusRadius = 1f;
     [SerializeField, Range(0f, 1f)] float focusCentering = 0.5f;
+    [SerializeField, Range(0f, 10f)] float maxTrailingDistance = 2f;
     [SerializeField, Range(1f, 360f)] float rotationSpeed = 90f;
     [SerializeField, Range(-89f, 89f)] float minVerticalAngle = -30f, maxVerticalAngle = 60f;
     [SerializeField, Min(0f)] float alignDelay = 5f;
@@ -18,6 +19,10 @@ public class OrbitCamera : MonoBehaviour
     [SerializeField, Min(0f)] float upAlignmentSpeed = 360f;
     [SerializeField] LayerMask obstructionMask = -1;
 
+    PlayerController pc;
+    float maxSpeed;
+    float followDistance;
+    float timeSinceExtended = 0f;
     Quaternion gravityAlignment = Quaternion.identity;
     Quaternion orbitRotation;
     Vector2 orbitAngles = new Vector2(45f, 0f);
@@ -27,6 +32,12 @@ public class OrbitCamera : MonoBehaviour
     private void Awake()
     {
         regularCamera = GetComponent<Camera>();
+        if (focus.GetComponent<PlayerController>())
+        {
+            pc = focus.GetComponent<PlayerController>();
+            maxSpeed = pc.GetMaxSpeed;
+            followDistance = distance;
+        }
         focusPoint = focus.position;
         transform.localRotation = orbitRotation = Quaternion.Euler(orbitAngles);
     }
@@ -34,6 +45,7 @@ public class OrbitCamera : MonoBehaviour
     {
         UpdateGravityAlignment();
         UpdateFocusPoint();
+        UpdateFollowDistance();
 
         if (ManualRotation() || AutomaticRotation())
         {
@@ -43,7 +55,7 @@ public class OrbitCamera : MonoBehaviour
 
         Quaternion lookRotation = gravityAlignment * orbitRotation;
         Vector3 lookDirection = lookRotation * Vector3.forward;
-        Vector3 lookPosition = focusPoint - lookDirection * distance;
+        Vector3 lookPosition = focusPoint - lookDirection * followDistance;
 
         Vector3 rectOffset = lookDirection * regularCamera.nearClipPlane;
         Vector3 rectPosition = lookPosition + rectOffset;
@@ -96,6 +108,24 @@ public class OrbitCamera : MonoBehaviour
             t = Mathf.Min(t, focusRadius / distance);
         }
         focusPoint = Vector3.Lerp(targetPoint, focusPoint, t);
+    }
+
+    void UpdateFollowDistance()
+    {
+        if (!pc) return;
+        followDistance = distance;
+        if (pc.GetSpeed > maxSpeed)
+        {
+            timeSinceExtended = focusCentering;
+        }
+        if (pc.GetSpeed <= maxSpeed && timeSinceExtended > 0f)
+        {
+            timeSinceExtended -= Time.deltaTime;
+            if (timeSinceExtended < 0f) timeSinceExtended = 0f;
+        }
+        float t = (maxSpeed >= pc.GetSpeed) ? 0 : (1 - (maxSpeed / pc.GetSpeed));
+        followDistance = Mathf.Lerp(distance + maxTrailingDistance, distance, (pc.GetSpeed > maxSpeed) ? t : (1 - timeSinceExtended / focusCentering));
+        Debug.Log(pc.GetSpeed > maxSpeed);
     }
 
     bool ManualRotation()

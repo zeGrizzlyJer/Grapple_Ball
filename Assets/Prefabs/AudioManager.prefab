@@ -65,7 +65,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boost
     clip: {fileID: 8300000, guid: 20d245b770c1ca14a868bf488fae20b5, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
