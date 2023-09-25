@@ -150,7 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4462b7e6f09054bb4b3106e3cc1c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 10
   rotationSpeed: 90
   oscillateSpeed: 2.5
   oscillateHeight: 0.1
+  burstPrefab: {fileID: 2778504055238066978, guid: 2c77b49ccb3cbd94b9b9305f14298062, type: 3}
+  bubblePrefab: {fileID: 7737384563205370658, guid: aa3e34093eaeb0e40943c63ee1732f1a, type: 3}
+  points: 10
