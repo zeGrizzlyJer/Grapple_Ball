@@ -18,10 +18,14 @@ public class ButtonAnimation : MonoBehaviour
         anim.SetBool("Pressed", true);
         FindObjectOfType<AudioManager>().Play("MouseClick");
         StartCoroutine(PressDelay());
+
+        FindObjectOfType<AudioManager>().Play("ButtonPress");
     }
     public void MouseOver()
     {
         anim.SetBool("Selected", true);
+
+        FindObjectOfType<AudioManager>().Play("ButtonSelect");
     }
     public void MouseOff()
     {

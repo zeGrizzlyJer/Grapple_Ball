@@ -16,7 +16,7 @@ public class ScreenFader : MonoBehaviour
 
     public void FadeScreen(bool i)
     {
-        if (!i)
+        if (i != true)
         {
             Debug.Log("FadeOff");
             anim.SetBool("Fade", false);
