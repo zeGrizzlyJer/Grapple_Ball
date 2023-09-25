@@ -125,7 +125,6 @@ public class OrbitCamera : MonoBehaviour
         }
         float t = (maxSpeed >= pc.GetSpeed) ? 0 : (1 - (maxSpeed / pc.GetSpeed));
         followDistance = Mathf.Lerp(distance + maxTrailingDistance, distance, (pc.GetSpeed > maxSpeed) ? t : (1 - timeSinceExtended / focusCentering));
-        Debug.Log(pc.GetSpeed > maxSpeed);
     }
 
     bool ManualRotation()

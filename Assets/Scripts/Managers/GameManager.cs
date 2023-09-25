@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
 {
     private GameStates currentGameState;
 
-    public GameStates GameStates
+    public GameStates GameState
     {
         get => currentGameState;
         set
