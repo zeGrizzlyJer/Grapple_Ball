@@ -12,7 +12,6 @@ public class ButtonFunctions : MonoBehaviour
         SceneChange, 
         Quit,
         Restart,
-        Menu,
 
         Settings,
         Back,
@@ -21,6 +20,8 @@ public class ButtonFunctions : MonoBehaviour
 
     }
     public ButtonType buttonType;
+
+    private MenuManager canvas;
 
     private Button button;
     private ScreenFader fader;
@@ -38,6 +39,10 @@ public class ButtonFunctions : MonoBehaviour
 
         if (button)
             button.onClick.AddListener(ButtonEffect);
+    }
+    private void Start()
+    {
+        canvas = FindObjectOfType<MenuManager>();
     }
 
     void ButtonEffect()
@@ -110,18 +115,18 @@ public class ButtonFunctions : MonoBehaviour
 
     public void PauseGame()
     {
-        FindObjectOfType<MenuManager>().PauseGame();
+        canvas.PauseGame();
     }
     public void ResumeGame()
     {
-        FindObjectOfType<MenuManager>().ResumeGame();
+        canvas.ResumeGame();
     }
     public void ShowSettingsMenu()
     {
-        FindObjectOfType<MenuManager>().ShowSettingsMenu();
+        canvas.ShowSettingsMenu();
     }
     public void CloseSettingsMenu()
     {
-        FindObjectOfType<MenuManager>().CloseSettingsMenu();
+        canvas.CloseSettingsMenu();
     }
 }

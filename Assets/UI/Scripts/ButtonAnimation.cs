@@ -34,7 +34,7 @@ public class ButtonAnimation : MonoBehaviour
 
     IEnumerator PressDelay()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(2f);
 
         anim.SetBool("Pressed", false);
     }

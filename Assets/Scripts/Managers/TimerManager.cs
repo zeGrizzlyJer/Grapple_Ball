@@ -115,5 +115,8 @@ public class TimerManager : MonoBehaviour
         {
             TimerStop();
         }
+
+        StatHolder.timer = timerTime;
+        StatHolder.score = coinCount;
     }
 }

@@ -9,6 +9,7 @@ public class ListingFunctions : MonoBehaviour
     {
         Brightness,
         Contrast,
+        Saturation,
         Volume,
     }
     private SliderJoint2D slider;

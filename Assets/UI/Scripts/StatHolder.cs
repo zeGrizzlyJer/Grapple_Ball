@@ -8,6 +8,9 @@ public class StatHolder
     public static float contrast = 0f;
     public static float volume = 0.5f;
 
+    public static float timer;
+    public static float score;
+
     // ---------------- //
 
     public static void SaveSettings()

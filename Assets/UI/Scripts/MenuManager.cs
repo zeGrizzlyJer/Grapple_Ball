@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     [Header("Menus")]
     public CanvasGroupFade menu;
     public CanvasGroupFade settingsMenu;
+    public CanvasGroupFade pauseMenu;
 
     [Header("Settings Listings")]
     [SerializeField] private Slider brightnessSlider;
@@ -64,6 +65,8 @@ public class MenuManager : MonoBehaviour
                 ResumeGame();
             }
         }
+
+        Debug.Log(StatHolder.timer);
     }
 
     public void PauseGame()
@@ -91,12 +94,12 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Pausing Game");
         menuOpened = true;
-        //GameStates = GameStates.PAUSE;
+        GameManager.Instance.GameState = GameStates.PAUSE;
 
         Time.timeScale = 0;
 
-        yield return new WaitForSecondsRealtime(2f);
-
+        pauseMenu.FadeIn();
+        yield return new WaitForSecondsRealtime(0.25f);
         menu.FadeIn();
         //fader.FadeScreen(false);
     }
@@ -105,19 +108,21 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Resuming Game");
         menuOpened = false;
 
+        menu.FadeOut();
+        pauseMenu.FadeOut();
+
         yield return new WaitForSecondsRealtime(2f);
 
         Time.timeScale = 1;
-
-        menu.FadeOut();
+        GameManager.Instance.GameState = GameStates.PLAY;
         //fader.FadeScreen(false);
     }
     IEnumerator iShowSettingsMenu()
     {
         Debug.Log("Showing Settings Menu");
-        yield return new WaitForSecondsRealtime(2f);
 
         menu.FadeOut();
+        yield return new WaitForSecondsRealtime(1.55f);
         settingsMenu.FadeIn();
 
         //fader.FadeScreen(false);
@@ -125,9 +130,9 @@ public class MenuManager : MonoBehaviour
     IEnumerator iCloseSettingsMenu()
     {
         Debug.Log("Closing Settings Menu");
-        yield return new WaitForSecondsRealtime(2f);
 
         settingsMenu.FadeOut();
+        yield return new WaitForSecondsRealtime(1.55f);
         menu.FadeIn();
 
         //fader.FadeScreen(false);
@@ -151,3 +156,7 @@ public class MenuManager : MonoBehaviour
         StatHolder.SaveSettings();
     }
 }
+
+
+
+
