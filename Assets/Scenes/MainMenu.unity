@@ -9449,7 +9449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 0
-  nextSceneName: RyanF
+  nextSceneName: WhiteBox
 --- !u!114 &8671207958458785138
 MonoBehaviour:
   m_ObjectHideFlags: 0
