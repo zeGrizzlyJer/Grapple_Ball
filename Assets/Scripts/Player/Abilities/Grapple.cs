@@ -18,6 +18,7 @@ public class Grapple : PlayerAbility
 
     private Rigidbody rBody;
     private CapsuleCollider cCollider;
+    private LineRenderer lineRenderer;
 
     protected override void Start()
     {
@@ -25,6 +26,9 @@ public class Grapple : PlayerAbility
         ability = PlayerAbilities.Grapple;
         rBody = GetComponent<Rigidbody>();
         cCollider = GetComponent<CapsuleCollider>();
+        station = transform.parent;
+        lineRenderer = GetComponentInParent<LineRenderer>();
+        lineRenderer.enabled = false;
 
         cCollider.enabled = false;
         rBody.useGravity = false;
@@ -34,6 +38,9 @@ public class Grapple : PlayerAbility
     private void Update()
     {
         if (!isDeployed) return;
+
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, station.position);
 
         float distance = (transform.position - station.position).magnitude;
         if (casting)
@@ -51,6 +58,7 @@ public class Grapple : PlayerAbility
             {
                 reeling = false;
                 isDeployed = false;
+                lineRenderer.enabled = false;
                 rBody.velocity = Vector3.zero;
                 DockAbility();
                 rBody.isKinematic = true;
@@ -110,6 +118,7 @@ public class Grapple : PlayerAbility
     private void LaunchGrapple(Vector3 direction, bool stationing)
     {
         isDeployed = true;
+        lineRenderer.enabled = true;
         rBody.isKinematic = false;
         transform.SetParent(null);
         if (stationing)
