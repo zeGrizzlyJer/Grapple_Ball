@@ -15,6 +15,8 @@ public class LookAt : MonoBehaviour
         Vertical = (1 << 1)
     }
 
+    [SerializeField] private Transform playerInputSpace;
+
     [SerializeField] private RotationDirection rotationDirection;
     [SerializeField] private Vector2 acceleration;
     [SerializeField] private Vector2 sensitivity;
