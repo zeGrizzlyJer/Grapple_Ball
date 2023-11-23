@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
-using GrappleBall.States;
+using GrappleBall;
 
 public class MenuManager : MonoBehaviour
 {
@@ -73,7 +73,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        Debug.Log(StatHolder.timer);
+        //Debug.Log(StatHolder.timer);
     }
 
     public void PauseGame()

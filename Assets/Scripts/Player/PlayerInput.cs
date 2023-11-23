@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using GrappleBall;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour, IRequireCleanup
 {
 
     [HideInInspector]
@@ -16,10 +17,18 @@ public class PlayerInput : MonoBehaviour
         input.Enable();
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         // Disable the input actions when the object is disabled
         input.Disable();
+        if (!GameManager.cleanedUp) OnCleanup();
+    }
+
+    public void OnCleanup()
+    {
+        Debug.Log($"{name}: Unsubscribing in progress...");
+        GameManager.Instance.OnApplicationCleanup -= OnCleanup;
+        GameManager.Instance.OnGameStateChanged -= DetermineInputActivity;
     }
 
     private void Awake() 
@@ -32,6 +41,8 @@ public class PlayerInput : MonoBehaviour
         input.Keyboard.PrimaryAction.performed += ctx => PrimaryActionPressed(ctx);
         input.Keyboard.SecondaryAction.performed += ctx => SecondaryActionPressed(ctx);
         input.Keyboard.Boost.performed += ctx => Boost(ctx);
+        GameManager.Instance.OnApplicationCleanup += OnCleanup;
+        GameManager.Instance.OnGameStateChanged += DetermineInputActivity;
     }
 
     private void Boost(InputAction.CallbackContext ctx)
@@ -87,8 +98,15 @@ public class PlayerInput : MonoBehaviour
         
     }
 
-    void Update()
+    private void DetermineInputActivity()
     {
-        
+        if (GameManager.Instance.GameState == GameStates.PAUSE)
+        {
+            input.Disable();
+        }
+        else
+        {
+            input.Enable();
+        }
     }
 }

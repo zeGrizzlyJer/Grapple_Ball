@@ -102,7 +102,7 @@ public class TimerManager : MonoBehaviour
 
         if (isRunning)
         {
-            Debug.LogFormat("Time: {0:00}:{1:00}:{2:00}", Minutes, Seconds, Milliseconds);
+            //Debug.LogFormat("Time: {0:00}:{1:00}:{2:00}", Minutes, Seconds, Milliseconds);
         }
 
         // Check if the timer has reached 10 seconds

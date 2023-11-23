@@ -132,8 +132,8 @@ public class OrbitCamera : MonoBehaviour
         const float e = 0.001f;
         if (input.x < -e || input.x > e || input.y < -e || input.y > e)
         {
-            orbitAngles += rotationSpeed * Time.unscaledDeltaTime * input;
-            lastManualRotationTime = Time.unscaledTime;
+            orbitAngles += rotationSpeed * Time.deltaTime * input;
+            lastManualRotationTime = Time.time;
             return true;
         }
         return false;

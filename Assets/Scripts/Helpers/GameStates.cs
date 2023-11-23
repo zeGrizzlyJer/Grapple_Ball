@@ -1,4 +1,4 @@
-﻿namespace GrappleBall.States
+﻿namespace GrappleBall
 {
     public enum GameStates
     {
@@ -6,12 +6,5 @@
         PAUSE = 1,
         WIN = 2,
         LOSE = 3,
-    }
-
-    public enum PlayerAbilities
-    {
-        GRAPPLE = 0,
-        PORTAL = 1,
-        YARN = 2,
     }
 }
