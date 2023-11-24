@@ -5,28 +5,27 @@ using UnityEngine.UI;
 
 public class BTN_Animation : MonoBehaviour
 {
-    private Image btnSelection;
-
     [Header("Lerp Settings")]
     [SerializeField] private float lerpDuration = 0.5f;
-    [SerializeField] private float startValue = 1;
-    [SerializeField] private float endValue = 0f;
+    private float startValue = 1;
+    private float endValue = 1.25f;
 
     private float curScale;
     private float lastScale;
 
-    private void Awake()
-    {
-        btnSelection = transform.GetChild(1).GetComponent<Image>();
-    }
+    //-----------------------------------//
+
     private void Start()
     {
         curScale = transform.localScale.x;
         lastScale = curScale;
+
+        startValue = curScale;
+        endValue = startValue + (startValue * 0.25f);
     }
     private void OnEnable()
     {
-            transform.localScale = new Vector3(startValue, startValue, startValue);
+        transform.localScale = new Vector3(startValue, startValue, startValue);
     }
 
     public void OnEnter()

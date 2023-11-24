@@ -74,6 +74,6 @@ public class CG_Fade : MonoBehaviour
         }
         curValue = startValue;
 
-       // gameObject.SetActive(false);
+       gameObject.SetActive(false);
     }
 }

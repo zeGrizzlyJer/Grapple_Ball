@@ -1,5 +1,7 @@
+using GrappleBall;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -14,30 +16,34 @@ public class BTN_Function : MonoBehaviour
         Quit,
     }
     public ButtonType buttonType;
-    private BTN_Animation anim;
 
     [SerializeField] private CG_Fade fadeScreen;
     [SerializeField] private float delayAction;
 
     [Header("SceneChange Options")]
     [SerializeField] private string nextSceneName;
+    [SerializeField] private bool restart;
 
     [Header("OpenCloseMenu Options")]
     [SerializeField] private CG_Fade[] groupToClose;
     [SerializeField] private CG_Fade[] groupToOpen;
 
+    [Header("Pause Settings")]
     [SerializeField] private bool pauseOnClick = false;
-    [SerializeField] private bool unpause;
+    [SerializeField] private INP_Pause pauseHandler;
 
     public UnityEvent open;
 
-    public bool pressed = false;
+    private bool pressed = false;
 
     //----------------------------------//
 
-    private void Awake()
+    private void Start()
     {
-        anim = GetComponent<BTN_Animation>();
+        if (restart)
+        {
+            nextSceneName = SceneManager.GetActiveScene().name;
+        }
     }
     private void OnDisable()
     {
@@ -74,7 +80,7 @@ public class BTN_Function : MonoBehaviour
         }
 
         if (pauseOnClick)
-            Pause();
+            pauseHandler.Pause();
     }
 
     private void SceneChange()
@@ -86,6 +92,7 @@ public class BTN_Function : MonoBehaviour
         yield return new WaitForSecondsRealtime(delayAction);
 
         SceneManager.LoadScene(nextSceneName);
+        Time.timeScale = 1;
     }
 
     private void OpenCloseMenu()
@@ -102,7 +109,7 @@ public class BTN_Function : MonoBehaviour
             {
                 for (int i = 0; i < groupToClose.Length; i++)
                 {
-                    if (groupToClose[i].gameObject.activeSelf) groupToClose[i].FadeOut(); groupToClose[i].gameObject.SetActive(false);
+                    if (groupToClose[i].gameObject.activeSelf) groupToClose[i].gameObject.SetActive(true); groupToClose[i].FadeOut();
                 }
             }
         }
@@ -122,6 +129,7 @@ public class BTN_Function : MonoBehaviour
             {
                 for (int i = 0; i < groupToOpen.Length; i++)
                 {
+                    groupToOpen[i].gameObject.SetActive(true);
                     groupToOpen[i].FadeOut();
                 }
             }
@@ -142,25 +150,6 @@ public class BTN_Function : MonoBehaviour
 #else
             Application.Quit();
 #endif
-    }
-
-    public void Pause()
-    {
-        if (unpause)
-        {
-            Time.timeScale = 1;
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else if (!unpause)
-        {
-            Time.timeScale = 0;
-
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-        }
-
     }
 
     public void UnPress()

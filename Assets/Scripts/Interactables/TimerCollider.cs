@@ -6,7 +6,9 @@ public class TimerCollider : Interactables
 {
     BoxCollider boxCollider;
     private TimerManager timer;
-    public bool timerActive; 
+    public bool timerActive;
+
+    [SerializeField] private CG_Fade hud;
 
     private void Start()
     {
@@ -24,7 +26,8 @@ public class TimerCollider : Interactables
             timer.TimerStart();
             timerActive = false;
 
-            GameObject.FindGameObjectWithTag("HUD").GetComponent<HUDManager>().enabled = true;
+            hud.gameObject.SetActive(true);
+            hud.GetComponent<CG_Fade>().FadeIn();
         }
     }
 
