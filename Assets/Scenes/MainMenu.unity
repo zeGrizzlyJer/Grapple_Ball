@@ -9014,15 +9014,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1844753065175604685, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 547.53284
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1844753065175604685, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 266.56305
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1844753065175604685, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.446852
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1844753065175604685, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9051,42 +9051,6 @@ PrefabInstance:
     - target: {fileID: 1844753065175604685, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: aba2734b86bdb534b8e5d4ab94c7b11e, type: 3}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[0].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[0].name
-      value: ButtonSelect
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 391ddf657005ddb4ea3c76085041a66b, type: 3}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[1].name
-      value: ButtonPress
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[0].pitch
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[1].pitch
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268046764669722412, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7863462937403651026, guid: 3e079eb5c8105c34186752baf79b8dbf, type: 3}
       propertyPath: m_Name

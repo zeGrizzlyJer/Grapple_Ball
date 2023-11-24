@@ -75,3 +75,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: ButtonSelect
+    clip: {fileID: 8300000, guid: aba2734b86bdb534b8e5d4ab94c7b11e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 391ddf657005ddb4ea3c76085041a66b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
